@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
 export function VideoShowcase() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     // Check for reduced motion preference
@@ -19,6 +21,42 @@ export function VideoShowcase() {
 
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  // Pause video immediately when pathname changes (navigation started)
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.pause();
+      video.currentTime = 0; // Reset to beginning
+    }
+  }, [pathname]);
+
+  // Pause video on any navigation attempt (before route change)
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleBeforeUnload = () => {
+      video.pause();
+    };
+
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      // Check if clicked element is a link or inside a link
+      const link = target.closest('a');
+      if (link && link.href) {
+        video.pause();
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    document.addEventListener('click', handleClick, true);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      document.removeEventListener('click', handleClick, true);
+    };
   }, []);
 
   useEffect(() => {

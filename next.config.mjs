@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  outputFileTracingRoot: undefined, // Use automatic detection
 };
 
 export default nextConfig;
