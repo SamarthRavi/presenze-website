@@ -135,7 +135,7 @@ export default function PrivacyPage() {
               {/* Children's Privacy */}
               <section className="mb-12">
                 <h2 className="font-display text-2xl font-semibold text-slate-900 dark:text-white">
-                  Children's Privacy
+                  Children&apos;s Privacy
                 </h2>
                 <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
                   Presenze is designed for use by educational institutions and their enrolled students, faculty, and administrators. We do not knowingly collect information from children under 13 without appropriate parental or institutional consent. If you believe we have collected such information inappropriately, please contact us immediately.

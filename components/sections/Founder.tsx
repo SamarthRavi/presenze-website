@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Caveat } from "next/font/google";
 import { Github, Globe, Linkedin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
@@ -39,10 +40,13 @@ export function Founder() {
               transition={{ duration: 0.2 }}
               className="mx-auto h-40 w-40 shrink-0 overflow-hidden rounded-full border-2 border-primary-200/50 shadow-lg dark:border-primary-500/20 md:h-full md:w-full md:rounded-3xl"
             >
-              <img 
+              <Image 
                 src="/founder/samarth-ravi.jpg" 
                 alt="Samarth Ravi Y - Founder of Presenze"
+                width={220}
+                height={220}
                 className="h-full w-full object-cover"
+                priority
               />
             </motion.div>
 
@@ -56,7 +60,7 @@ export function Founder() {
               </p>
 
               <p className="mt-5 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
-                What started as a frustration with paper attendance in my own classes became Presenze. A mobile-first BLE solution that removes friction from the daily routine. I built this to prove that campus infrastructure can feel modern and effortless, not just digitized. Now, we're expanding beyond attendance to create tools that institutions actually want to use.
+                What started as a frustration with paper attendance in my own classes became Presenze. A mobile-first BLE solution that removes friction from the daily routine. I built this to prove that campus infrastructure can feel modern and effortless, not just digitized. Now, we&apos;re expanding beyond attendance to create tools that institutions actually want to use.
               </p>
 
               {/* Social Links */}

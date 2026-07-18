@@ -36,7 +36,7 @@ export default function TermsPage() {
                   Acceptance of Terms
                 </h2>
                 <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
-                  By accessing or using Presenze (the "Platform"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Platform.
+                  By accessing or using Presenze (the &quot;Platform&quot;), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Platform.
                 </p>
                 <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
                   These terms apply to all users, including students, faculty, heads of departments (HODs), and institutional administrators.
@@ -76,7 +76,7 @@ export default function TermsPage() {
                   <li>Use Bluetooth proximity verification honestly and only mark attendance when physically present</li>
                   <li>Respect the role-based permissions assigned to your account (student, faculty, HOD, admin)</li>
                   <li>Report security vulnerabilities, bugs, or misuse to our support team</li>
-                  <li>Comply with your institution's policies regarding attendance and academic conduct</li>
+                  <li>Comply with your institution&apos;s policies regarding attendance and academic conduct</li>
                 </ul>
               </section>
 
@@ -91,7 +91,7 @@ export default function TermsPage() {
                 <ul className="mt-4 space-y-3 text-slate-600 dark:text-slate-400">
                   <li>Attempt to circumvent Bluetooth proximity verification or spoof attendance records</li>
                   <li>Access accounts, data, or features you are not authorized to view</li>
-                  <li>Interfere with the Platform's operation or attempt to gain unauthorized access to systems</li>
+                  <li>Interfere with the Platform&apos;s operation or attempt to gain unauthorized access to systems</li>
                   <li>Use the Platform for any unlawful, fraudulent, or malicious purposes</li>
                   <li>Reverse engineer, decompile, or attempt to extract source code from Presenze apps</li>
                   <li>Harass, abuse, or harm other users or disrupt their use of the Platform</li>
@@ -140,10 +140,10 @@ export default function TermsPage() {
                   Limitation of Liability
                 </h2>
                 <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Presenze is provided "as is" during this early-access phase. To the fullest extent permitted by law:
+                  Presenze is provided &quot;as is&quot; during this early-access phase. To the fullest extent permitted by law:
                 </p>
                 <ul className="mt-4 space-y-3 text-slate-600 dark:text-slate-400">
-                  <li>We make no warranties, express or implied, regarding the Platform's functionality, reliability, or suitability for any purpose</li>
+                  <li>We make no warranties, express or implied, regarding the Platform&apos;s functionality, reliability, or suitability for any purpose</li>
                   <li>We are not liable for data loss, service interruptions, or errors in attendance records</li>
                   <li>We are not responsible for academic or administrative consequences resulting from Platform issues</li>
                   <li>Our total liability for any claim is limited to the amount you paid to use Presenze (if applicable)</li>
@@ -189,7 +189,7 @@ export default function TermsPage() {
                   </p>
                 </div>
                 <p className="mt-6 text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Thank you for being part of Presenze's early-access journey. Your feedback and cooperation help us build better campus infrastructure.
+                  Thank you for being part of Presenze&apos;s early-access journey. Your feedback and cooperation help us build better campus infrastructure.
                 </p>
               </section>
             </div>
