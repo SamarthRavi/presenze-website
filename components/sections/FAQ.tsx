@@ -19,7 +19,7 @@ const faqs: FaqItem[] = [
   {
     question: "How many apps does Presenze have?",
     answer:
-      "Two mobile apps: Presenze for students, and Presenze Dashboard for Faculty and HOD users. Faculty and HODs log into the same Dashboard app—the interface changes based on their role. Plus one web Admin Portal for institutional management.",
+      "Two Mobile apps: Presenze for students, and Presenze Dashboard for Faculty and HOD users. Faculty and HODs log into the same Dashboard app—the interface changes based on their role. Plus one web Admin Portal for institutional management.",
   },
   {
     question: "What is the Admin Portal used for?",

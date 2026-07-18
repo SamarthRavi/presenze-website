@@ -135,91 +135,46 @@ function StudentAppMockup() {
 
 // Dashboard App Mockup
 function DashboardAppMockup() {
-  const students = [
-    { name: "Aarav Mehta", status: "verified" },
-    { name: "Sara Iyer", status: "verified" },
-    { name: "Devika Rao", status: "verified" },
-    { name: "Kabir Shah", status: "syncing" },
-  ];
-
   return (
-    <PhoneFrame title="Presenze Dashboard" role="Faculty / HOD App" delay={0.15}>
-      <div className="mt-8 space-y-4">
-        {/* Session card */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
-        >
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <div className="mono-tag !text-slate-400">Role-Based View</div>
-              <div className="mt-2 font-display text-2xl font-semibold">
-                Operating Systems
-              </div>
-              <div className="mt-1 text-sm text-slate-400">
-                Faculty controls · HOD visibility
-              </div>
-            </div>
-            <div className="rounded-full bg-accent-500/20 px-3 py-1 text-xs font-semibold text-accent-400 border border-accent-500/30">
-              LIVE
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.15 }}
+      whileHover={{ 
+        y: -12, 
+        rotateY: -2,
+        rotateX: 2,
+        transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+      }}
+      className="perspective-1200 mx-auto w-full max-w-[340px]"
+    >
+      <div className="group relative rounded-[3rem] border border-slate-300/80 bg-white/90 p-3 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] dark:border-white/20 dark:bg-white/5 dark:hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
+        {/* Screen */}
+        <div className="relative h-[660px] overflow-hidden rounded-[2.5rem] bg-black">
+          {/* Notch */}
+          <div className="absolute left-1/2 top-0 z-20 h-8 w-40 -translate-x-1/2 rounded-b-3xl bg-black shadow-lg" />
+          
+          {/* Actual Screenshot */}
+          <div className="relative h-full w-full flex items-center justify-center pt-6 pb-6">
+            <div className="relative w-full h-full">
+              <Image
+                src="/screenshots/faculty-dashboard.jpeg"
+                alt="Presenze Faculty/HOD Dashboard App"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
           </div>
-
-          <button className="mt-5 flex w-full items-center justify-center gap-2.5 rounded-xl bg-primary-500 px-5 py-4 text-base font-semibold text-white shadow-button-primary transition-all hover:bg-primary-600 hover:shadow-button-hover active:scale-[0.98]">
-            <Radio size={20} className="animate-pulse-slow" />
-            Session Active
-          </button>
-        </motion.div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 gap-3">
-          {[
-            { value: "Advertiser", label: "Phone Role" },
-            { value: "57/60", label: "Present" },
-          ].map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7 + i * 0.1 }}
-              className="rounded-xl bg-white/5 p-4"
-            >
-              <div className="font-display text-xl font-semibold">{stat.value}</div>
-              <div className="mono-tag !text-slate-500 mt-1">{stat.label}</div>
-            </motion.div>
-          ))}
         </div>
 
-        {/* Student list */}
-        <div className="space-y-2">
-          {students.map((student, i) => (
-            <motion.div
-              key={student.name}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.9 + i * 0.1 }}
-              className="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3.5 transition-colors hover:bg-white/10"
-            >
-              <div>
-                <div className="text-sm font-medium">{student.name}</div>
-                <div className="mono-tag !text-slate-500">Student Scanner</div>
-              </div>
-              <span
-                className={`text-xs font-semibold ${
-                  student.status === "verified"
-                    ? "text-accent-400"
-                    : "text-slate-500"
-                }`}
-              >
-                {student.status}
-              </span>
-            </motion.div>
-          ))}
+        {/* Shine effect on hover */}
+        <div className="pointer-events-none absolute inset-0 rounded-[3rem] opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+          <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-br from-white/10 via-transparent to-transparent" />
         </div>
       </div>
-    </PhoneFrame>
+    </motion.div>
   );
 }
 

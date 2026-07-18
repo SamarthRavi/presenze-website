@@ -129,8 +129,8 @@ export function DownloadSection() {
           
           <Reveal delay={0.1}>
             <h2 className="text-balance font-display text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
-              Two mobile apps,{" "}
-              <span className="gradient-text">one Admin Portal</span>
+              Two Mobile Apps,{" "}
+              <span className="gradient-text">One Admin Portal</span>
             </h2>
           </Reveal>
           

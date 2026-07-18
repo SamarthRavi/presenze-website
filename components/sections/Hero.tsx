@@ -203,98 +203,20 @@ export function Hero() {
                 style={{ rotateX, rotateY }}
                 className="relative z-10 mx-auto h-[480px] w-[240px] rounded-[2.8rem] border border-slate-300/60 bg-white/80 p-2.5 shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-white/5 dark:shadow-black/50 sm:h-[540px] sm:w-[270px]"
               >
-                <div className="relative h-full w-full overflow-hidden rounded-[2.3rem] bg-navy-800">
+                <div className="relative h-full w-full overflow-hidden rounded-[2.3rem] bg-black">
                   {/* Notch */}
-                  <div className="absolute left-1/2 top-0 z-20 h-6 w-28 -translate-x-1/2 rounded-b-3xl bg-navy-900 sm:h-7 sm:w-32" />
+                  <div className="absolute left-1/2 top-0 z-20 h-6 w-28 -translate-x-1/2 rounded-b-3xl bg-black sm:h-7 sm:w-32" />
                   
-                  {/* Grid pattern */}
-                  <div className="absolute inset-0 bg-grid opacity-10" />
-
-                  {/* Device Content */}
-                  <div className="relative flex h-full flex-col px-4 pb-6 pt-10 text-white sm:px-5 sm:pb-6 sm:pt-11">
-                    {/* Header */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Image
-                          src="/brand/presenze-app-icon-dark.png"
-                          alt="Presenze"
-                          width={28}
-                          height={28}
-                          className="rounded-lg shadow-lg sm:h-8 sm:w-8"
-                        />
-                        <div>
-                          <div className="text-xs font-semibold sm:text-sm">Presenze Dashboard</div>
-                          <div className="mono-tag !text-[10px] !text-slate-500 sm:!text-xs">Faculty Role</div>
-                        </div>
-                      </div>
-                      <span className="signal-dot scale-75 sm:scale-100" />
-                    </div>
-
-                    {/* Active Session Card */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="mt-6 rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm sm:mt-8 sm:rounded-2xl sm:p-4"
-                    >
-                      <div className="mono-tag !text-[10px] !text-slate-400 sm:!text-xs">Live Session</div>
-                      <div className="mt-1.5 font-display text-base font-semibold sm:mt-2 sm:text-xl">
-                        Operating Systems
-                      </div>
-                      <div className="mt-0.5 text-xs text-slate-400 sm:mt-1 sm:text-sm">
-                        Room 4B · B.Tech CSE · 09:00 AM
-                      </div>
-                      <div className="mt-3 flex items-center justify-between rounded-lg bg-primary-500 px-3 py-2.5 text-white shadow-button-primary sm:mt-4 sm:rounded-xl sm:px-4 sm:py-3">
-                        <span className="text-xs font-semibold sm:text-sm">Session Active</span>
-                        <Radio size={14} className="animate-pulse-slow sm:h-4 sm:w-4" />
-                      </div>
-                    </motion.div>
-
-                    {/* Status Grid */}
-                    <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4">
-                      {[
-                        { icon: Bluetooth, label: "BLE Status", value: "Broadcasting" },
-                        { icon: Radio, label: "Phone Role", value: "Advertiser" },
-                      ].map((item, i) => (
-                        <motion.div
-                          key={item.label}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.7 + i * 0.1 }}
-                          className="rounded-lg border border-white/10 bg-white/5 p-2.5 sm:rounded-xl sm:p-3"
-                        >
-                          <item.icon size={14} className="text-accent-400 sm:h-4 sm:w-4" />
-                          <div className="mono-tag !text-[10px] !text-slate-500 mt-1.5 sm:!text-xs sm:mt-2">{item.label}</div>
-                          <div className="mt-0.5 text-[10px] font-semibold sm:mt-1 sm:text-xs">{item.value}</div>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    {/* Detected Students List */}
-                    <div className="mt-3 flex-1 space-y-1.5 overflow-hidden sm:mt-4 sm:space-y-2">
-                      {detectedStudents.map(([name, status], i) => (
-                        <motion.div
-                          key={name}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.9 + i * 0.15 }}
-                          className="flex items-center justify-between rounded-lg bg-white/5 px-2.5 py-2 sm:rounded-xl sm:px-3 sm:py-3"
-                        >
-                          <div>
-                            <div className="text-xs font-medium sm:text-sm">{name}</div>
-                            <div className="mono-tag !text-[10px] !text-slate-500 sm:!text-xs">Student Scanner</div>
-                          </div>
-                          <span
-                            className={`text-[10px] font-medium sm:text-xs ${
-                              status === "verified"
-                                ? "text-accent-400"
-                                : "text-slate-400"
-                            }`}
-                          >
-                            {status}
-                          </span>
-                        </motion.div>
-                      ))}
+                  {/* Actual Screenshot */}
+                  <div className="relative h-full w-full flex items-center justify-center pt-4 pb-4 sm:pt-5 sm:pb-5">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/screenshots/faculty-dashboard.jpeg"
+                        alt="Presenze Faculty/HOD Dashboard App"
+                        fill
+                        className="object-contain"
+                        priority
+                      />
                     </div>
                   </div>
                 </div>
