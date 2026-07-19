@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -48,7 +48,16 @@ export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const onHomePage = isHomePage(pathname);
 
-  const handleNavClick = (e: React.MouseEvent, link: typeof NAV_LINKS[0]) => {
+  // Memoize handlers to prevent recreation on every render
+  const openMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(true);
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  const handleNavClick = useCallback((e: React.MouseEvent, link: typeof NAV_LINKS[0]) => {
     // If we're on homepage, prevent default and scroll
     if (onHomePage) {
       e.preventDefault();
@@ -58,7 +67,7 @@ export function Navbar() {
       // On other pages, let the Link component handle navigation
       setIsMobileMenuOpen(false);
     }
-  };
+  }, [onHomePage]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
@@ -174,7 +183,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(true)}
+            onClick={openMobileMenu}
             className="flex lg:hidden h-10 w-10 items-center justify-center rounded-xl text-slate-900 transition-colors duration-200 hover:bg-slate-100 dark:text-white dark:hover:bg-white/10 outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
             aria-label="Open menu"
           >
@@ -193,7 +202,7 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               className="fixed inset-0 z-[60] bg-slate-900/80 backdrop-blur-sm lg:hidden"
             />
 
@@ -208,13 +217,14 @@ export function Navbar() {
                 damping: 30,
               }}
               className="fixed right-0 top-0 z-[70] h-full w-full max-w-sm bg-white shadow-2xl dark:bg-navy-800 lg:hidden"
+              style={{ touchAction: "pan-y" }}
             >
               <div className="flex h-full flex-col">
                 {/* Mobile Menu Header */}
                 <div className="flex items-center justify-between border-b border-slate-200 p-6 dark:border-white/10">
                   <BrandLogo />
                   <button
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={closeMobileMenu}
                     className="flex h-10 w-10 items-center justify-center rounded-xl text-slate-900 transition-colors duration-200 hover:bg-slate-100 dark:text-white dark:hover:bg-white/10"
                     aria-label="Close menu"
                   >
@@ -225,30 +235,24 @@ export function Navbar() {
                 {/* Mobile Navigation Links */}
                 <nav className="flex-1 overflow-y-auto p-6">
                   <div className="space-y-2">
-                    {NAV_LINKS.map((link, index) => {
+                    {NAV_LINKS.map((link) => {
                       const href = getNavHref(link, pathname);
                       const isActive = onHomePage && activeSection === link.id;
                       
                       return (
-                        <motion.div
+                        <Link
                           key={link.id}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.05 }}
+                          href={href}
+                          onClick={(e) => handleNavClick(e, link)}
+                          className={cn(
+                            "block w-full rounded-xl px-5 py-4 text-left text-base font-medium transition-colors duration-200",
+                            isActive
+                              ? "bg-primary-50 text-primary-900 dark:bg-primary-500/20 dark:text-primary-100"
+                              : "text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-white/5"
+                          )}
                         >
-                          <Link
-                            href={href}
-                            onClick={(e) => handleNavClick(e, link)}
-                            className={cn(
-                              "block w-full rounded-xl px-5 py-4 text-left text-base font-medium transition-colors duration-200",
-                              isActive
-                                ? "bg-primary-50 text-primary-900 dark:bg-primary-500/20 dark:text-primary-100"
-                                : "text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-white/5"
-                            )}
-                          >
-                            {link.label}
-                          </Link>
-                        </motion.div>
+                          {link.label}
+                        </Link>
                       );
                     })}
                   </div>
