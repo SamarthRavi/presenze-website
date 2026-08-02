@@ -72,7 +72,7 @@ export function VideoShowcase() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-white py-24 dark:bg-navy-700 lg:py-32">
+    <section className="relative overflow-hidden bg-white py-16 dark:bg-navy-700 lg:py-24 xl:py-32">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -82,10 +82,10 @@ export function VideoShowcase() {
             duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="mx-auto max-w-[1200px]"
+          className="mx-auto max-w-[1000px] lg:max-w-[1100px] xl:max-w-[1200px]"
         >
           <div 
-            className="relative overflow-hidden rounded-2xl border border-slate-200/60 bg-black shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:border-white/10 dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] lg:rounded-3xl"
+            className="relative overflow-hidden rounded-xl border border-slate-200/60 bg-black shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:border-white/10 dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)] lg:rounded-2xl xl:rounded-3xl"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
@@ -117,12 +117,12 @@ export function VideoShowcase() {
                   transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
                   onClick={toggleMute}
                   aria-label={isMuted ? "Unmute video" : "Mute video"}
-                  className="absolute bottom-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white shadow-lg backdrop-blur-md transition-all duration-200 hover:scale-110 hover:border-white/30 hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black/20 active:scale-95"
+                  className="absolute bottom-2 right-2 z-10 flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white shadow-lg backdrop-blur-md transition-all duration-200 hover:scale-110 hover:border-white/30 hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black/20 active:scale-95 lg:bottom-3 lg:right-3 lg:h-8 lg:w-8"
                 >
                   {isMuted ? (
-                    <VolumeX size={14} />
+                    <VolumeX size={12} className="lg:h-[14px] lg:w-[14px]" />
                   ) : (
-                    <Volume2 size={14} />
+                    <Volume2 size={12} className="lg:h-[14px] lg:w-[14px]" />
                   )}
                 </motion.button>
               )}

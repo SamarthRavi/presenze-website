@@ -128,14 +128,14 @@ export function DownloadSection() {
           </Reveal>
           
           <Reveal delay={0.1}>
-            <h2 className="text-balance font-display text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+            <h2 className="text-balance font-display text-3xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl xl:text-6xl">
               Two Mobile Apps,{" "}
               <span className="gradient-text">One Admin Portal</span>
             </h2>
           </Reveal>
           
           <Reveal delay={0.2}>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 dark:text-slate-300 lg:mt-6 xl:text-lg">
               Presenze keeps daily attendance mobile while the web portal manages 
               institutional structure, records, and analytics.
             </p>
@@ -143,7 +143,7 @@ export function DownloadSection() {
         </div>
 
         {/* Apps Grid */}
-        <div className="mt-16 grid gap-8 lg:mt-20 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-3 xl:mt-20 xl:gap-8">
           {apps.map((app, index) => {
             const colors = colorMap[app.color as keyof typeof colorMap];
             
@@ -158,14 +158,14 @@ export function DownloadSection() {
                     y: -8,
                     transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
                   }}
-                  className={`group relative h-full overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-card transition-all duration-500 dark:border-white/10 dark:bg-white/[0.03] ${colors.glow}`}
+                  className={`group relative h-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-card transition-all duration-500 dark:border-white/10 dark:bg-white/[0.03] lg:rounded-3xl lg:p-7 xl:p-8 ${colors.glow}`}
                 >
                   {/* Top gradient line */}
                   <div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${colors.icon}`} />
 
                   {/* Header */}
                   <div className="flex items-start justify-between gap-4">
-                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200 dark:ring-white/10">
+                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200 dark:ring-white/10 lg:h-18 lg:w-18 xl:h-20 xl:w-20">
                       <Image
                         src={app.image}
                         alt={app.title}
@@ -181,22 +181,22 @@ export function DownloadSection() {
                         className="hidden h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 dark:block"
                       />
                     </div>
-                    <div className={`rounded-full border px-3 py-1.5 text-xs font-semibold ${colors.badge}`}>
+                    <div className={`rounded-full border px-2.5 py-1 text-xs font-semibold lg:px-3 lg:py-1.5 ${colors.badge}`}>
                       {app.subtitle}
                     </div>
                   </div>
 
                   {/* Content */}
-                  <h3 className="mt-6 font-display text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">
+                  <h3 className="mt-5 font-display text-xl font-semibold tracking-tight text-slate-900 dark:text-white lg:mt-6 xl:text-2xl">
                     {app.title}
                   </h3>
                   
-                  <p className="mt-3 text-[15px] leading-relaxed text-slate-600 dark:text-slate-400">
+                  <p className="mt-2.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400 lg:mt-3 lg:text-[15px]">
                     {app.description}
                   </p>
 
                   {/* Features list */}
-                  <div className="mt-6 space-y-2.5">
+                  <div className="mt-5 space-y-2 lg:mt-6 lg:space-y-2.5">
                     {app.features.map((feature, i) => (
                       <motion.div
                         key={feature.label}
@@ -204,7 +204,7 @@ export function DownloadSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 + index * 0.1 + i * 0.05 }}
-                        className="flex items-center gap-3 rounded-xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-900 transition-colors hover:bg-slate-100 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                        className="flex items-center gap-3 rounded-xl bg-slate-50 px-3.5 py-2.5 text-sm font-medium text-slate-900 transition-colors hover:bg-slate-100 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 lg:px-4 lg:py-3"
                       >
                         <feature.icon className={`h-4 w-4 shrink-0 ${colors.icon}`} />
                         {feature.label}
@@ -213,19 +213,19 @@ export function DownloadSection() {
                   </div>
 
                   {/* CTA or Status */}
-                  <div className="mt-8">
+                  <div className="mt-6 lg:mt-8">
                     {app.cta ? (
                       <a
                         href={app.cta.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-primary btn-md w-full justify-center"
+                        className="btn-primary w-full justify-center px-5 py-2.5 text-sm lg:px-6 lg:py-3"
                       >
                         {app.cta.label}
-                        <ArrowUpRight size={16} />
+                        <ArrowUpRight size={14} className="lg:h-4 lg:w-4" />
                       </a>
                     ) : (
-                      <div className="flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
+                      <div className="flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-medium text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-400 lg:py-3">
                         <div className="h-1.5 w-1.5 animate-pulse-slow rounded-full bg-slate-400 dark:bg-slate-500" />
                         {app.status}
                       </div>
@@ -244,37 +244,37 @@ export function DownloadSection() {
 
         {/* Bottom info card */}
         <Reveal delay={0.4}>
-          <div className="mt-16 rounded-3xl border border-primary-200 bg-gradient-to-br from-primary-50 to-white p-8 text-center shadow-sm dark:border-primary-500/20 dark:from-primary-500/10 dark:to-transparent lg:mt-20 lg:p-10">
+          <div className="mt-12 rounded-2xl border border-primary-200 bg-gradient-to-br from-primary-50 to-white p-6 text-center shadow-sm dark:border-primary-500/20 dark:from-primary-500/10 dark:to-transparent lg:mt-16 lg:rounded-3xl lg:p-8 xl:mt-20 xl:p-10">
             <div className="mx-auto max-w-3xl">
-              <div className="inline-flex items-center gap-3 rounded-full bg-white px-4 py-2 shadow-sm dark:bg-white/10">
-                <Smartphone size={18} className="text-primary-600 dark:text-primary-400" />
+              <div className="inline-flex items-center gap-2.5 rounded-full bg-white px-3.5 py-2 shadow-sm dark:bg-white/10 lg:gap-3 lg:px-4">
+                <Smartphone size={16} className="text-primary-600 dark:text-primary-400 lg:h-[18px] lg:w-[18px]" />
                 <span className="text-sm font-semibold text-slate-900 dark:text-white">
                   Mobile Apps Coming Soon
                 </span>
               </div>
-              <p className="mt-6 text-lg leading-relaxed text-slate-700 dark:text-slate-300">
+              <p className="mt-5 text-base leading-relaxed text-slate-700 dark:text-slate-300 lg:mt-6 lg:text-lg">
                 Presenze and Presenze Dashboard are currently in development. The Admin Portal 
                 is live and ready for institutional setup. Mobile releases will follow with 
                 full BLE attendance capabilities.
               </p>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3 lg:mt-8 lg:gap-4">
                 <a
                   href="https://github.com/presenzehq"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary btn-md"
+                  className="btn-secondary px-5 py-2.5 text-sm lg:px-6 lg:py-3"
                 >
                   Follow on GitHub
-                  <ArrowUpRight size={16} />
+                  <ArrowUpRight size={14} className="lg:h-4 lg:w-4" />
                 </a>
                 <a
                   href="https://www.linkedin.com/company/presenzehq"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary btn-md"
+                  className="btn-secondary px-5 py-2.5 text-sm lg:px-6 lg:py-3"
                 >
                   Connect on LinkedIn
-                  <ArrowUpRight size={16} />
+                  <ArrowUpRight size={14} className="lg:h-4 lg:w-4" />
                 </a>
               </div>
             </div>

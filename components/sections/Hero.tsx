@@ -75,7 +75,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-white pb-24 pt-32 dark:bg-navy-700 sm:pt-40 lg:pb-32 lg:pt-48"
+      className="relative overflow-hidden bg-white pb-16 pt-24 dark:bg-navy-700 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36 xl:pb-32 xl:pt-48"
     >
       {/* Premium gradient background */}
       <div className="pointer-events-none absolute inset-0">
@@ -116,7 +116,7 @@ export function Hero() {
       </div>
 
       <div className="container relative">
-        <div className="mx-auto grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="mx-auto grid items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           {/* Left column - Content */}
           <div className="relative z-10">
             <Reveal>
@@ -127,14 +127,14 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <h1 className="text-balance font-display text-5xl font-semibold leading-[1.08] tracking-tight text-slate-900 dark:text-white sm:text-6xl lg:text-7xl">
+              <h1 className="text-balance font-display text-4xl font-semibold leading-[1.08] tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl">
                 Attendance verified by{" "}
                 <span className="gradient-text">phones already in the room</span>
               </h1>
             </Reveal>
 
             <Reveal delay={0.2}>
-              <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-slate-600 dark:text-slate-300 sm:text-xl">
+              <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg lg:mt-6 xl:text-xl">
                 Faculty and HODs start sessions in Presenze Dashboard. Their phone becomes the 
                 secure BLE advertiser, student phones scan when marking attendance, and every 
                 verified record appears in the Admin Portal in real time.
@@ -142,20 +142,20 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={0.3}>
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+              <div className="mt-8 flex flex-wrap items-center gap-3 lg:gap-4">
                 <button
                   onClick={() => scrollToSection('download')}
-                  className="btn-primary btn-lg group"
+                  className="btn-primary group px-6 py-3 text-sm lg:px-7 lg:py-3.5 xl:px-8 xl:py-4 xl:text-base"
                 >
                   Explore Apps
-                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 xl:h-[18px] xl:w-[18px]" />
                 </button>
                 <button
                   onClick={() => scrollToSection('how-it-works')}
-                  className="btn-secondary btn-lg group"
+                  className="btn-secondary group px-6 py-3 text-sm lg:px-7 lg:py-3.5 xl:px-8 xl:py-4 xl:text-base"
                 >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white dark:bg-primary-500">
-                    <Play size={14} fill="currentColor" />
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary-600 text-white dark:bg-primary-500 xl:h-8 xl:w-8">
+                    <Play size={12} fill="currentColor" className="xl:h-[14px] xl:w-[14px]" />
                   </span>
                   See How It Works
                 </button>
@@ -163,7 +163,7 @@ export function Hero() {
             </Reveal>
 
             <Reveal delay={0.4}>
-              <div className="mt-16 grid grid-cols-2 gap-8 border-t border-slate-200 pt-8 dark:border-white/10 sm:grid-cols-4 sm:gap-6">
+              <div className="mt-12 grid grid-cols-2 gap-6 border-t border-slate-200 pt-6 dark:border-white/10 sm:grid-cols-4 sm:gap-6 lg:mt-14 lg:pt-7 xl:mt-16 xl:gap-8 xl:pt-8">
                 {[
                   { value: "0", label: "Classroom Hardware" },
                   { value: "2", label: "Mobile Apps" },
@@ -171,10 +171,10 @@ export function Hero() {
                   { value: "1", label: "Admin Portal" },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <div className="font-display text-3xl font-semibold text-slate-900 dark:text-white sm:text-4xl">
+                    <div className="font-display text-2xl font-semibold text-slate-900 dark:text-white sm:text-3xl xl:text-4xl">
                       {stat.value}
                     </div>
-                    <div className="mono-tag mt-2">{stat.label}</div>
+                    <div className="mono-tag mt-1.5 xl:mt-2">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -190,7 +190,7 @@ export function Hero() {
                 mx.set(0);
                 my.set(0);
               }}
-              className="perspective-1200 relative mx-auto h-[500px] w-full max-w-[540px] sm:h-[600px]"
+              className="perspective-1200 relative mx-auto h-[420px] w-full max-w-[480px] sm:h-[500px] lg:h-[520px] xl:h-[600px]"
             >
               {/* BLE Signal Rings */}
               <SignalRings
@@ -201,14 +201,14 @@ export function Hero() {
               {/* Main Device Frame */}
               <motion.div
                 style={{ rotateX, rotateY }}
-                className="relative z-10 mx-auto h-[480px] w-[240px] rounded-[2.8rem] border border-slate-300/60 bg-white/80 p-2.5 shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-white/5 dark:shadow-black/50 sm:h-[540px] sm:w-[270px]"
+                className="relative z-10 mx-auto h-[400px] w-[200px] rounded-[2.5rem] border border-slate-300/60 bg-white/80 p-2 shadow-2xl backdrop-blur-xl dark:border-white/20 dark:bg-white/5 dark:shadow-black/50 sm:h-[460px] sm:w-[230px] lg:h-[480px] lg:w-[240px] xl:h-[540px] xl:w-[270px]"
               >
-                <div className="relative h-full w-full overflow-hidden rounded-[2.3rem] bg-black">
+                <div className="relative h-full w-full overflow-hidden rounded-[2.1rem] bg-black">
                   {/* Notch */}
-                  <div className="absolute left-1/2 top-0 z-20 h-6 w-28 -translate-x-1/2 rounded-b-3xl bg-black sm:h-7 sm:w-32" />
+                  <div className="absolute left-1/2 top-0 z-20 h-5 w-24 -translate-x-1/2 rounded-b-3xl bg-black sm:h-6 sm:w-28 xl:h-7 xl:w-32" />
                   
                   {/* Actual Screenshot */}
-                  <div className="relative h-full w-full flex items-center justify-center pt-4 pb-4 sm:pt-5 sm:pb-5">
+                  <div className="relative h-full w-full flex items-center justify-center pt-3 pb-3 sm:pt-4 sm:pb-4 xl:pt-5 xl:pb-5">
                     <div className="relative w-full h-full">
                       <Image
                         src="/screenshots/faculty-dashboard.jpeg"

@@ -42,6 +42,24 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Base font size - scales properly on all devices */
+    font-size: 16px;
+    /* Performance optimizations */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* Responsive font scaling for laptops */
+  @media screen and (min-width: 1024px) and (max-width: 1440px) {
+    html {
+      font-size: 15px;
+    }
+  }
+  
+  @media screen and (min-width: 1441px) {
+    html {
+      font-size: 16px;
+    }
   }
 
   html.dark {
@@ -55,6 +73,9 @@
     /* Light mode: Beautiful cyan/blue gradient background */
     background: linear-gradient(180deg, #E0F2FE 0%, #DBEAFE 25%, #E0F2FE 50%, #CFFAFE 75%, #BAE6FD 100%);
     min-height: 100vh;
+    /* Performance optimization */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
   }
   
   body.dark,
@@ -108,18 +129,25 @@
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300;
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+    /* Performance optimization */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .btn-primary {
     @apply btn bg-primary-600 text-white shadow-button-primary;
     @apply hover:bg-primary-700 hover:shadow-button-hover hover:-translate-y-0.5;
     @apply active:translate-y-0 active:shadow-button-primary;
+    will-change: transform;
   }
 
   .btn-secondary {
     @apply btn bg-white/90 text-slate-900 shadow-card;
     @apply hover:bg-white hover:shadow-card-hover hover:-translate-y-0.5;
     @apply dark:bg-white/10 dark:text-white dark:hover:bg-white/15;
+    will-change: transform;
   }
 
   .btn-lg {
@@ -138,11 +166,15 @@
   .card {
     @apply rounded-2xl border bg-white p-6 shadow-card transition-all duration-300;
     @apply border-slate-200 dark:border-white/10 dark:bg-white/5;
+    /* Performance optimization */
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   .card-hover {
     @apply card hover:-translate-y-1 hover:shadow-card-hover;
     @apply hover:border-primary-500/40 dark:hover:border-primary-400/30;
+    will-change: transform;
   }
 
   /* Signal dot with pulse animation */
@@ -185,7 +217,7 @@
 
   /* Section container */
   .section {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32;
   }
 
   /* Content container */
@@ -238,6 +270,7 @@
   /* Smooth reveal animation utilities */
   .reveal {
     @apply opacity-0 translate-y-8;
+    will-change: opacity, transform;
   }
 
   .reveal-visible {
@@ -316,5 +349,145 @@
   .gpu {
     transform: translateZ(0);
     will-change: transform;
+  }
+}
+
+/* ===================================
+   PERFORMANCE OPTIMIZATIONS
+   =================================== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* GPU acceleration for animated elements */
+.gpu-accelerated {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Optimize images and media */
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Lazy loading optimization */
+img[loading="lazy"],
+iframe[loading="lazy"] {
+  content-visibility: auto;
+}
+
+/* Optimize animations on mobile */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile */
+  .animate-float,
+  .animate-float-delay-1,
+  .animate-float-delay-2,
+  .animate-float-delay-3 {
+    animation-duration: 8s !important;
+  }
+  
+  /* Simplify parallax effects */
+  .perspective-1000,
+  .perspective-1200 {
+    perspective: none;
+  }
+  
+  /* Reduce blur for better mobile performance */
+  .backdrop-blur-xl,
+  .backdrop-blur-glass {
+    backdrop-filter: blur(8px) saturate(150%);
+  }
+}
+
+/* Optimize for low-end devices */
+@media (max-width: 768px) and (max-height: 1024px) {
+  /* Reduce shadow complexity */
+  .shadow-card,
+  .shadow-card-hover,
+  .shadow-glass,
+  .shadow-glass-dark {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Simplify gradients */
+  .gradient-text {
+    background: linear-gradient(90deg, #1E5EFF 0%, #38BDF8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}
+
+/* Optimize scrolling performance */
+* {
+  scroll-behavior: smooth;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  /* Touch device optimizations */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+}
+
+/* Content visibility for better rendering performance */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* Optimize font rendering */
+@supports (font-variation-settings: normal) {
+  body {
+    font-optical-sizing: auto;
+  }
+}
+
+/* Reduce paint and layout thrashing */
+.glass,
+.glass-panel,
+.card,
+.btn {
+  contain: layout style paint;
+}
+
+/* Hardware acceleration hints */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(-20px) translateZ(0);
+  }
+}
+
+/* Optimize for high refresh rate displays */
+@media (min-resolution: 120dpi) {
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .card-hover:hover {
+    transition-duration: 200ms;
   }
 }

@@ -107,35 +107,35 @@ export function HowItWorks() {
           </Reveal>
           
           <Reveal delay={0.1}>
-            <h2 className="text-balance font-display text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+            <h2 className="text-balance font-display text-3xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl xl:text-6xl">
               A professor-led signal, student scanners,{" "}
               <span className="gradient-text">and instant ERP records</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 dark:text-slate-300 lg:mt-6 xl:text-lg">
               Follow the complete journey from BLE broadcast to real-time Admin Portal visibility
             </p>
           </Reveal>
         </div>
 
-        <div className="mt-16 grid gap-12 lg:mt-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-16">
+        <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-12 xl:mt-20 xl:gap-16">
           {/* Flow Visualization - Sticky on desktop */}
           <Reveal>
             <div className="sticky top-24">
-              <div className="flow-panel-bg overflow-hidden rounded-3xl border border-slate-200 p-6 shadow-xl dark:border-white/10 lg:p-8">
-                <div className="flex items-center justify-between mb-6">
+              <div className="flow-panel-bg overflow-hidden rounded-2xl border border-slate-200 p-5 shadow-xl dark:border-white/10 lg:rounded-3xl lg:p-6 xl:p-8">
+                <div className="flex items-center justify-between mb-5 lg:mb-6">
                   <div>
                     <p className="mono-tag !text-slate-500 dark:!text-slate-400">Live Attendance Path</p>
-                    <h3 className="mt-2 font-display text-2xl font-semibold text-slate-900 dark:text-white">
+                    <h3 className="mt-2 font-display text-xl font-semibold text-slate-900 dark:text-white lg:text-2xl">
                       From BLE Signal to Admin Portal
                     </h3>
                   </div>
                   <span className="signal-dot" />
                 </div>
 
-                <div className="relative space-y-3">
+                <div className="relative space-y-2.5 lg:space-y-3">
                   {flow.map((node, i) => {
                     const colors = colorMap[node.color as keyof typeof colorMap];
                     
@@ -213,7 +213,7 @@ export function HowItWorks() {
           </Reveal>
 
           {/* Step-by-step breakdown */}
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-3.5 sm:grid-cols-2 lg:gap-4">
             {steps.map((step, i) => (
               <Reveal key={step.title} delay={(i % 6) * 0.05}>
                 <motion.div
@@ -258,19 +258,19 @@ export function HowItWorks() {
 
         {/* Bottom info card */}
         <Reveal delay={0.4}>
-          <div className="mt-16 rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-8 shadow-sm dark:border-white/10 dark:from-white/[0.03] dark:to-white/[0.01] lg:mt-20 lg:p-10">
-            <div className="grid gap-8 lg:grid-cols-[1fr_auto]">
+          <div className="mt-12 rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-6 shadow-sm dark:border-white/10 dark:from-white/[0.03] dark:to-white/[0.01] lg:mt-16 lg:rounded-3xl lg:p-8 xl:mt-20 xl:p-10">
+            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:gap-8">
               <div>
-                <h3 className="font-display text-2xl font-semibold text-slate-900 dark:text-white">
+                <h3 className="font-display text-xl font-semibold text-slate-900 dark:text-white lg:text-2xl">
                   No Classroom Hardware Required
                 </h3>
-                <p className="mt-3 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+                <p className="mt-2.5 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-300 lg:mt-3 lg:text-lg">
                   Unlike traditional systems that require fixed RFID readers or biometric devices in 
                   every classroom, Presenze uses the phones already in everyone&apos;s pockets. Faculty 
                   phones act as BLE advertisers, student phones scan, and the entire flow happens 
                   through mobile apps.
                 </p>
-                <div className="mt-6 flex flex-wrap gap-3">
+                <div className="mt-5 flex flex-wrap gap-2.5 lg:mt-6 lg:gap-3">
                   <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium shadow-sm dark:bg-white/5">
                     <ShieldCheck className="h-4 w-4 text-accent-600 dark:text-accent-400" />
                     <span className="text-slate-700 dark:text-slate-300">Secure BLE validation</span>
@@ -288,7 +288,7 @@ export function HowItWorks() {
               <div className="flex items-center">
                 <button
                   onClick={() => scrollToSection("screenshots")}
-                  className="btn-primary btn-lg whitespace-nowrap"
+                  className="btn-primary whitespace-nowrap px-6 py-3 text-sm lg:px-7 lg:py-3.5 xl:px-8 xl:py-4 xl:text-base"
                 >
                   View App Screenshots
                 </button>

@@ -10,7 +10,24 @@ const config: Config = {
     container: {
       center: true,
       padding: "1.5rem",
-      screens: { "2xl": "1320px" },
+      screens: { 
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px",
+        "2xl": "1320px" 
+      },
+    },
+    screens: {
+      'xs': '475px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      // Laptop-specific breakpoints
+      'laptop': '1366px',
+      'desktop': '1920px',
     },
     extend: {
       colors: {

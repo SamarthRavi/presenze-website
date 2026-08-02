@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, useCallback, memo } from "react";
 
 type Theme = "light" | "dark";
 
@@ -11,7 +11,7 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export const ThemeProvider = memo(function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
@@ -21,21 +21,26 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.classList.toggle("dark", preferred === "dark");
   }, []);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme((prev) => {
       const next = prev === "dark" ? "light" : "dark";
-      window.localStorage.setItem("presenze-theme", next);
-      document.documentElement.classList.toggle("dark", next === "dark");
+      
+      // Use requestAnimationFrame for smoother DOM updates
+      requestAnimationFrame(() => {
+        window.localStorage.setItem("presenze-theme", next);
+        document.documentElement.classList.toggle("dark", next === "dark");
+      });
+      
       return next;
     });
-  };
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
-}
+});
 
 export function useTheme() {
   const ctx = useContext(ThemeContext);

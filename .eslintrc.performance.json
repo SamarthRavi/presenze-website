@@ -1,0 +1,8 @@
+{
+  "extends": ["./.eslintrc.json"],
+  "rules": {
+    "react/jsx-no-bind": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
+  }
+}

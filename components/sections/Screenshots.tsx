@@ -255,14 +255,14 @@ export function Screenshots() {
           </Reveal>
           
           <Reveal delay={0.1}>
-            <h2 className="text-balance font-display text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+            <h2 className="text-balance font-display text-3xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl xl:text-6xl">
               Three surfaces,{" "}
               <span className="gradient-text">one attendance record</span>
             </h2>
           </Reveal>
           
           <Reveal delay={0.2}>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 dark:text-slate-300 lg:mt-6 xl:text-lg">
               Students use Presenze, Faculty and HODs share Presenze Dashboard, and 
               administrators manage the institution from the web portal.
             </p>
@@ -270,17 +270,17 @@ export function Screenshots() {
         </div>
 
         {/* Mobile Apps */}
-        <div className="mt-16 grid gap-12 lg:mt-20 lg:grid-cols-2 lg:gap-16">
+        <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-12 xl:mt-20 xl:gap-16">
           <div>
-            <div className="mb-6 text-center lg:text-left">
+            <div className="mb-5 text-center lg:mb-6 lg:text-left">
               <div className="inline-flex items-center gap-2 rounded-full bg-primary-100 px-3 py-1 text-xs font-semibold text-primary-700 dark:bg-primary-500/20 dark:text-primary-400">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary-500" />
                 Mobile App 01
               </div>
-              <h3 className="mt-4 font-display text-2xl font-semibold text-slate-900 dark:text-white">
+              <h3 className="mt-3 font-display text-xl font-semibold text-slate-900 dark:text-white lg:mt-4 lg:text-2xl">
                 Student App
               </h3>
-              <p className="mt-2 text-slate-600 dark:text-slate-400">
+              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-400 lg:mt-2 lg:text-base">
                 Mark attendance, review history, and follow timetable
               </p>
             </div>
@@ -288,15 +288,15 @@ export function Screenshots() {
           </div>
 
           <div>
-            <div className="mb-6 text-center lg:text-left">
+            <div className="mb-5 text-center lg:mb-6 lg:text-left">
               <div className="inline-flex items-center gap-2 rounded-full bg-secondary-100 px-3 py-1 text-xs font-semibold text-secondary-700 dark:bg-secondary-500/20 dark:text-secondary-400">
                 <span className="h-1.5 w-1.5 rounded-full bg-secondary-500" />
                 Mobile App 02
               </div>
-              <h3 className="mt-4 font-display text-2xl font-semibold text-slate-900 dark:text-white">
+              <h3 className="mt-3 font-display text-xl font-semibold text-slate-900 dark:text-white lg:mt-4 lg:text-2xl">
                 Faculty & HOD Dashboard
               </h3>
-              <p className="mt-2 text-slate-600 dark:text-slate-400">
+              <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-400 lg:mt-2 lg:text-base">
                 One Dashboard app with role-based controls
               </p>
             </div>
@@ -305,16 +305,16 @@ export function Screenshots() {
         </div>
 
         {/* Admin Portal */}
-        <div className="mt-20 lg:mt-28">
-          <div className="mb-8 text-center">
+        <div className="mt-16 lg:mt-20 xl:mt-28">
+          <div className="mb-6 text-center lg:mb-8">
             <div className="inline-flex items-center gap-2 rounded-full bg-accent-100 px-3 py-1 text-xs font-semibold text-accent-700 dark:bg-accent-500/20 dark:text-accent-400">
               <span className="h-1.5 w-1.5 rounded-full bg-accent-500" />
               Web Portal
             </div>
-            <h3 className="mt-4 font-display text-2xl font-semibold text-slate-900 dark:text-white">
+            <h3 className="mt-3 font-display text-xl font-semibold text-slate-900 dark:text-white lg:mt-4 lg:text-2xl">
               Admin Portal
             </h3>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <p className="mt-1.5 text-sm text-slate-600 dark:text-slate-400 lg:mt-2 lg:text-base">
               Institution-wide management and analytics
             </p>
           </div>

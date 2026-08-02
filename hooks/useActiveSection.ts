@@ -1,54 +1,75 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { NAV_LINKS } from "@/lib/navigation";
+import { throttle } from "@/app/performance";
 
 export function useActiveSection(): string {
   const [activeSection, setActiveSection] = useState(NAV_LINKS[0].id);
+  const intersectingMapRef = useRef(new Map<string, number>());
+
+  // Memoized callback to avoid recreating on each render
+  const updateActiveSection = useCallback(() => {
+    const intersectingMap = intersectingMapRef.current;
+    
+    if (intersectingMap.size > 0) {
+      const viewportCenter = window.innerHeight / 2;
+      let closestId = NAV_LINKS[0].id;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      intersectingMap.forEach((_, sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+
+        const rect = section.getBoundingClientRect();
+        const sectionCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(sectionCenter - viewportCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestId = sectionId;
+        }
+      });
+
+      // Only update if the active section actually changed
+      setActiveSection((prev) => (prev === closestId ? prev : closestId));
+    }
+  }, []);
+
+  // Throttled version to improve performance
+  const throttledUpdateActiveSection = useCallback(
+    throttle(updateActiveSection, 100),
+    [updateActiveSection]
+  );
 
   useEffect(() => {
-    // Track which sections are currently intersecting with their ratios
-    const intersectingMap = new Map<string, number>();
+    const intersectingMap = intersectingMapRef.current;
 
     const observer = new IntersectionObserver(
       (entries) => {
         // Update intersection map
+        let hasChanges = false;
         entries.forEach((entry) => {
           const sectionId = entry.target.id;
           if (entry.isIntersecting) {
             intersectingMap.set(sectionId, entry.intersectionRatio);
+            hasChanges = true;
           } else {
-            intersectingMap.delete(sectionId);
+            if (intersectingMap.has(sectionId)) {
+              intersectingMap.delete(sectionId);
+              hasChanges = true;
+            }
           }
         });
 
-        // Find section closest to viewport center among visible sections
-        if (intersectingMap.size > 0) {
-          const viewportCenter = window.innerHeight / 2;
-          let closestId = NAV_LINKS[0].id;
-          let closestDistance = Number.POSITIVE_INFINITY;
-
-          intersectingMap.forEach((_, sectionId) => {
-            const section = document.getElementById(sectionId);
-            if (!section) return;
-
-            const rect = section.getBoundingClientRect();
-            const sectionCenter = rect.top + rect.height / 2;
-            const distance = Math.abs(sectionCenter - viewportCenter);
-
-            if (distance < closestDistance) {
-              closestDistance = distance;
-              closestId = sectionId;
-            }
-          });
-
-          // Only update if the active section actually changed
-          setActiveSection((prev) => (prev === closestId ? prev : closestId));
+        // Only update if there were actual changes
+        if (hasChanges) {
+          throttledUpdateActiveSection();
         }
       },
       {
-        // Use thresholds to detect when sections enter/leave viewport
-        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+        // Reduced thresholds for better performance
+        threshold: [0, 0.25, 0.5, 0.75, 1],
         // Extend observation area slightly for smoother transitions
         rootMargin: "-10% 0px -10% 0px",
       }
@@ -91,8 +112,9 @@ export function useActiveSection(): string {
     return () => {
       clearTimeout(timeoutId);
       observer.disconnect();
+      intersectingMap.clear();
     };
-  }, []);
+  }, [throttledUpdateActiveSection]);
 
   return activeSection;
 }

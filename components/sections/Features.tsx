@@ -116,14 +116,14 @@ export function Features() {
           </Reveal>
           
           <Reveal delay={0.1}>
-            <h2 className="text-balance font-display text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
+            <h2 className="text-balance font-display text-3xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl xl:text-6xl">
               Everything attendance needs, from{" "}
               <span className="gradient-text">BLE verification to ERP control</span>
             </h2>
           </Reveal>
           
           <Reveal delay={0.2}>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 dark:text-slate-300 lg:mt-6 xl:text-lg">
               Presenze keeps the product surface simple: one student app, one shared Dashboard 
               app for Faculty and HOD roles, and one Admin Portal for the institution.
             </p>
@@ -131,7 +131,7 @@ export function Features() {
         </div>
 
         {/* Features Grid */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:mt-20">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 xl:mt-20 xl:gap-6">
           {features.map((feature, i) => {
             const colors = colorClasses[feature.color as keyof typeof colorClasses];
             
@@ -146,25 +146,25 @@ export function Features() {
                     y: -6, 
                     transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
                   }}
-                  className={`group relative h-full overflow-hidden rounded-2xl border bg-white p-6 shadow-sm transition-all duration-300 dark:bg-white/[0.03] ${colors.border} ${colors.glow} hover:border-opacity-100 hover:shadow-card-hover`}
+                  className={`group relative h-full overflow-hidden rounded-2xl border bg-white p-5 shadow-sm transition-all duration-300 dark:bg-white/[0.03] lg:p-6 ${colors.border} ${colors.glow} hover:border-opacity-100 hover:shadow-card-hover`}
                 >
                   {/* Top gradient line */}
                   <div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-current to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${colors.icon}`} />
                   
                   {/* Icon container */}
-                  <div className={`relative flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300 ${colors.bg} group-hover:scale-110`}>
-                    <feature.icon className={`h-6 w-6 transition-colors duration-300 ${colors.icon}`} />
+                  <div className={`relative flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-300 lg:h-12 lg:w-12 ${colors.bg} group-hover:scale-110`}>
+                    <feature.icon className={`h-5 w-5 transition-colors duration-300 lg:h-6 lg:w-6 ${colors.icon}`} />
                     
                     {/* Icon glow effect */}
                     <div className={`absolute inset-0 rounded-xl opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-50 ${colors.bg}`} />
                   </div>
 
                   {/* Content */}
-                  <h3 className="mt-5 font-display text-lg font-semibold tracking-tight text-slate-900 dark:text-white">
+                  <h3 className="mt-4 font-display text-base font-semibold tracking-tight text-slate-900 dark:text-white lg:mt-5 lg:text-lg">
                     {feature.title}
                   </h3>
                   
-                  <p className="mt-2.5 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400 lg:mt-2.5">
                     {feature.description}
                   </p>
 
@@ -200,13 +200,13 @@ export function Features() {
 
         {/* Bottom CTA */}
         <Reveal delay={0.3}>
-          <div className="mt-16 text-center lg:mt-20">
-            <p className="text-slate-600 dark:text-slate-400">
+          <div className="mt-12 text-center lg:mt-16 xl:mt-20">
+            <p className="text-sm text-slate-600 dark:text-slate-400 lg:text-base">
               Want to see how it all works together?
             </p>
             <button
               onClick={() => scrollToSection("how-it-works")}
-              className="btn-secondary btn-md mt-4"
+              className="btn-secondary mt-3 px-5 py-2.5 text-sm lg:mt-4 lg:px-6 lg:py-3"
             >
               View the Complete Flow
             </button>

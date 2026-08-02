@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { Github, Linkedin, Mail, Instagram, Globe, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, Instagram, ArrowUpRight } from "lucide-react";
 import { scrollToSection } from "@/lib/navigation";
+import { memo, useCallback } from "react";
 
 const productLinks = [
   { label: "Features", href: "#features" },
@@ -45,9 +46,69 @@ const socialLinks = [
   },
 ];
 
-export function Footer() {
+const SocialIcon = memo(function SocialIcon({ 
+  social 
+}: { 
+  social: typeof socialLinks[0] 
+}) {
   return (
-    <footer className="border-t border-slate-200 bg-white dark:border-white/10 dark:bg-navy-800">
+    <a
+      href={social.href}
+      target={social.href.startsWith('http') ? '_blank' : undefined}
+      rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+      aria-label={social.label}
+      className={`flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-600 transition-all duration-300 hover:scale-110 hover:shadow-md dark:bg-white/5 dark:text-slate-400 ${social.color}`}
+      style={{ willChange: 'transform' }}
+    >
+      <social.icon size={18} />
+    </a>
+  );
+});
+
+const FooterLink = memo(function FooterLink({ 
+  link, 
+  type 
+}: { 
+  link: { label: string; href: string }; 
+  type: string;
+}) {
+  const handleClick = useCallback(() => {
+    scrollToSection(link.href);
+  }, [link.href]);
+
+  if (link.href.startsWith('#')) {
+    return (
+      <button
+        onClick={handleClick}
+        className="text-[15px] text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+        style={{ willChange: 'color' }}
+      >
+        {link.label}
+      </button>
+    );
+  }
+
+  const isExternal = link.href.startsWith('http');
+  
+  return (
+    <a
+      href={link.href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className={`flex items-center gap-1.5 text-[15px] text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white ${isExternal ? 'inline-flex' : ''}`}
+      style={{ willChange: 'color' }}
+    >
+      {link.label}
+      {isExternal && <ArrowUpRight size={12} />}
+    </a>
+  );
+});
+
+export const Footer = memo(function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="border-t border-slate-200 bg-white dark:border-white/10 dark:bg-navy-800" style={{ willChange: 'auto' }}>
       <div className="container">
         {/* Main footer content */}
         <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] lg:gap-8 lg:py-20">
@@ -61,6 +122,7 @@ export function Footer() {
                   width={40}
                   height={40}
                   className="h-full w-full object-cover dark:hidden"
+                  loading="lazy"
                 />
                 <Image
                   src="/brand/presenze-app-icon-dark.png"
@@ -68,6 +130,7 @@ export function Footer() {
                   width={40}
                   height={40}
                   className="hidden h-full w-full object-cover dark:block"
+                  loading="lazy"
                 />
               </div>
               <span className="font-display text-xl font-semibold text-slate-900 dark:text-white">
@@ -82,16 +145,7 @@ export function Footer() {
             {/* Social links */}
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target={social.href.startsWith('http') ? '_blank' : undefined}
-                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  aria-label={social.label}
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-slate-600 transition-all duration-300 hover:scale-110 hover:shadow-md dark:bg-white/5 dark:text-slate-400 ${social.color}`}
-                >
-                  <social.icon size={18} />
-                </a>
+                <SocialIcon key={social.label} social={social} />
               ))}
             </div>
 
@@ -110,21 +164,7 @@ export function Footer() {
             <ul className="mt-6 space-y-3">
               {productLinks.map((link) => (
                 <li key={`product-${link.href}`}>
-                  {link.href.startsWith('#') ? (
-                    <button
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-[15px] text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <a
-                      href={link.href}
-                      className="text-[15px] text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-                    >
-                      {link.label}
-                    </a>
-                  )}
+                  <FooterLink link={link} type="product" />
                 </li>
               ))}
             </ul>
@@ -138,24 +178,7 @@ export function Footer() {
             <ul className="mt-6 space-y-3">
               {platformLinks.map((link) => (
                 <li key={`platform-${link.href}-${link.label}`}>
-                  {link.href.startsWith('#') ? (
-                    <button
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-[15px] text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-[15px] text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-                    >
-                      {link.label}
-                      <ArrowUpRight size={12} />
-                    </a>
-                  )}
+                  <FooterLink link={link} type="platform" />
                 </li>
               ))}
             </ul>
@@ -171,6 +194,7 @@ export function Footer() {
                 <a
                   href="mailto:hello@presenze.website"
                   className="text-[15px] text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                  style={{ willChange: 'color' }}
                 >
                   hello@presenze.website
                 </a>
@@ -181,6 +205,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-[15px] text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                  style={{ willChange: 'color' }}
                 >
                   Instagram
                   <ArrowUpRight size={12} />
@@ -192,6 +217,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-[15px] text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                  style={{ willChange: 'color' }}
                 >
                   GitHub
                   <ArrowUpRight size={12} />
@@ -203,6 +229,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-[15px] text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                  style={{ willChange: 'color' }}
                 >
                   LinkedIn
                   <ArrowUpRight size={12} />
@@ -215,14 +242,26 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-center gap-4 border-t border-slate-200 py-8 text-sm text-slate-600 dark:border-white/10 dark:text-slate-400">
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <span>&copy; {new Date().getFullYear()} Presenze. All rights reserved.</span>
+            <span>&copy; {currentYear} Presenze. All rights reserved.</span>
             <span className="hidden sm:inline">·</span>
-            <a href="/privacy" className="hover:text-slate-900 dark:hover:text-white">Privacy Policy</a>
+            <a 
+              href="/privacy" 
+              className="hover:text-slate-900 dark:hover:text-white"
+              style={{ willChange: 'color' }}
+            >
+              Privacy Policy
+            </a>
             <span className="hidden sm:inline">·</span>
-            <a href="/terms" className="hover:text-slate-900 dark:hover:text-white">Terms of Service</a>
+            <a 
+              href="/terms" 
+              className="hover:text-slate-900 dark:hover:text-white"
+              style={{ willChange: 'color' }}
+            >
+              Terms of Service
+            </a>
           </div>
         </div>
       </div>
     </footer>
   );
-}
+});
