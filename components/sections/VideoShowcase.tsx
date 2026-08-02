@@ -72,7 +72,7 @@ export function VideoShowcase() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-white py-16 dark:bg-navy-700 lg:py-24 xl:py-32">
+    <section className="relative overflow-hidden bg-slate-50 py-16 dark:bg-navy-700 lg:py-24 xl:py-32">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

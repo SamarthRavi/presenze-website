@@ -124,6 +124,16 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('presenze-theme') || 'dark';
+                document.documentElement.classList.toggle('dark', theme === 'dark');
+              } catch (e) {}
+            `,
+          }}
+        />
       </head>
       <body
         className={`${display.variable} ${sans.variable} ${mono.variable} font-sans antialiased selection:bg-primary-500/30 selection:text-primary-900 dark:selection:bg-primary-400/30 dark:selection:text-white`}

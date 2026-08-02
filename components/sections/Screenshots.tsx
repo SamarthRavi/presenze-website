@@ -218,7 +218,7 @@ function AdminPortalMockup() {
         </div>
 
         {/* Portal content - Actual Screenshot */}
-        <div className="overflow-hidden rounded-b-2xl bg-white dark:bg-navy-800">
+        <div className="overflow-hidden rounded-b-2xl bg-slate-100 dark:bg-navy-800">
           <div className="relative w-full flex items-center justify-center" style={{ height: '580px' }}>
             <div className="relative w-full h-full">
               <Image

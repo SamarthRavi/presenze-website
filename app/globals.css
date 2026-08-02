@@ -70,8 +70,8 @@
     @apply text-slate-900 dark:text-slate-50;
     font-feature-settings: "ss01", "cv01", "liga";
     font-variant-numeric: tabular-nums;
-    /* Light mode: Beautiful cyan/blue gradient background */
-    background: linear-gradient(180deg, #E0F2FE 0%, #DBEAFE 25%, #E0F2FE 50%, #CFFAFE 75%, #BAE6FD 100%);
+    /* Light mode: Softer, dimmer gradient with muted tones */
+    background: linear-gradient(180deg, #F1F5F9 0%, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%, #CBD5E1 100%);
     min-height: 100vh;
     /* Performance optimization */
     -webkit-overflow-scrolling: touch;
@@ -110,9 +110,9 @@
   /* Glass morphism styles */
   .glass {
     @apply backdrop-blur-xl;
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   }
   
   .dark .glass {
@@ -144,8 +144,8 @@
   }
 
   .btn-secondary {
-    @apply btn bg-white/90 text-slate-900 shadow-card;
-    @apply hover:bg-white hover:shadow-card-hover hover:-translate-y-0.5;
+    @apply btn bg-slate-100/90 text-slate-900 shadow-sm;
+    @apply hover:bg-slate-200/90 hover:shadow-md hover:-translate-y-0.5;
     @apply dark:bg-white/10 dark:text-white dark:hover:bg-white/15;
     will-change: transform;
   }
@@ -307,7 +307,7 @@
 
   /* Flow panel gradient background */
   .flow-panel-bg {
-    background: linear-gradient(180deg, #E0F2FE 0%, #DBEAFE 25%, #E0F2FE 50%, #CFFAFE 75%, #BAE6FD 100%);
+    background: linear-gradient(180deg, #F1F5F9 0%, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%, #CBD5E1 100%);
   }
 
   .dark .flow-panel-bg {
@@ -316,7 +316,7 @@
 
   /* Founder section gradient background - same as homepage */
   .founder-section-bg {
-    background: linear-gradient(180deg, #E0F2FE 0%, #DBEAFE 25%, #E0F2FE 50%, #CFFAFE 75%, #BAE6FD 100%);
+    background: linear-gradient(180deg, #F1F5F9 0%, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%, #CBD5E1 100%);
   }
 
   .dark .founder-section-bg {

@@ -15,8 +15,9 @@ export const ThemeProvider = memo(function ThemeProvider({ children }: { childre
   const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
+    // Check if user has a stored preference, otherwise default to dark
     const stored = window.localStorage.getItem("presenze-theme") as Theme | null;
-    const preferred = stored ?? "dark";
+    const preferred = stored ?? "dark"; // Default to dark mode
     setTheme(preferred);
     document.documentElement.classList.toggle("dark", preferred === "dark");
   }, []);

@@ -94,7 +94,7 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="section scroll-mt-24 bg-white dark:bg-navy-700"
+      className="section scroll-mt-24 bg-slate-50 dark:bg-navy-700"
     >
       <div className="container">
         {/* Section Header */}

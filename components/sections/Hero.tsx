@@ -75,7 +75,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-white pb-16 pt-24 dark:bg-navy-700 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36 xl:pb-32 xl:pt-48"
+      className="relative overflow-hidden bg-slate-50 pb-16 pt-24 dark:bg-navy-700 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36 xl:pb-32 xl:pt-48"
     >
       {/* Premium gradient background */}
       <div className="pointer-events-none absolute inset-0">

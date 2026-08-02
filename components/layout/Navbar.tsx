@@ -193,7 +193,7 @@ export const Navbar = memo(function Navbar() {
           "flex w-full max-w-7xl items-center justify-between rounded-2xl px-6 py-4 transition-all duration-300",
           isScrolled
             ? "glass shadow-glass dark:shadow-glass-dark"
-            : "bg-white/60 shadow-sm backdrop-blur-md dark:bg-navy-800/60"
+            : "bg-slate-100/80 shadow-sm backdrop-blur-md dark:bg-navy-800/60"
         )}
         style={{ willChange: 'transform, opacity' }}
       >

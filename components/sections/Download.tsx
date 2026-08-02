@@ -100,7 +100,7 @@ export function DownloadSection() {
   return (
     <section
       id="download"
-      className="section scroll-mt-24 relative overflow-hidden bg-white dark:bg-navy-700"
+      className="section scroll-mt-24 relative overflow-hidden bg-slate-50 dark:bg-navy-700"
     >
       {/* Background decoration */}
       <div className="pointer-events-none absolute inset-0">

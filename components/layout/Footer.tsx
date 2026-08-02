@@ -108,7 +108,7 @@ export const Footer = memo(function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-200 bg-white dark:border-white/10 dark:bg-navy-800" style={{ willChange: 'auto' }}>
+    <footer className="border-t border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-navy-800" style={{ willChange: 'auto' }}>
       <div className="container">
         {/* Main footer content */}
         <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] lg:gap-8 lg:py-20">
